@@ -94,17 +94,6 @@ for i in range(0, len(history.history['mse'])):
 app = Flask(__name__)
 
 
-from flask import request
-def shutdown_server():
-    from win32api import GenerateConsoleCtrlEvent
-    CTRL_C_EVENT = 0
-    GenerateConsoleCtrlEvent(CTRL_C_EVENT, 0)
-    
-@app.get('/shutdown')
-def shutdown():
-    shutdown_server()
-    return 'Server shutting down...'
-
 @app.route("/")
 def home():
     values = [row[1] for row in data]
