@@ -104,7 +104,7 @@ def shutdown_server():
 @app.get('/shutdown')
 def shutdown():
     shutdown_server()
-    return 'Server shutting down...
+    return 'Server shutting down...'
 
 @app.route("/")
 def home():
