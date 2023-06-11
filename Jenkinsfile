@@ -10,4 +10,20 @@ pipeline {
             }
         }
     }
+    stage('Run Container') {
+            steps {
+                bat 'docker run -p 5000:5000 my-flask-app'
+            }
+            post {
+                always {
+                    bat 'docker stop $(docker ps -q --filter ancestor=my-flask-app)'
+                    bat 'docker rm $(docker ps -aq --filter ancestor=my-flask-app)'
+                }
+            }
+        }
+     stage('Test Application') {
+            steps {
+                bat 'curl http://localhost:5000'
+            }
+        }
 }
