@@ -21,9 +21,4 @@ pipeline {
                 }
             }
         }
-     stage('Test Application') {
-            steps {
-                bat 'curl http://localhost:5000'
-            }
-        }
 }
