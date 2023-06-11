@@ -94,6 +94,18 @@ for i in range(0, len(history.history['mse'])):
 app = Flask(__name__)
 
 
+from flask import request
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+    
+@app.get('/shutdown')
+def shutdown():
+    shutdown_server()
+    return 'Server shutting down...
+
 @app.route("/")
 def home():
     values = [row[1] for row in data]
