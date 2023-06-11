@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Users\\Hammas Ahmed\\AppData\\Local\\Programs\\Python\\Python310\\"
+        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Program Files\\Docker\\Docker\\resources\\bin"
     }
     agent any
     stages {
