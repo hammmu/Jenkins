@@ -96,10 +96,9 @@ app = Flask(__name__)
 
 from flask import request
 def shutdown_server():
-    func = request.environ.get('werkzeug.server.shutdown')
-    if func is None:
-        raise RuntimeError('Not running with the Werkzeug Server')
-    func()
+    from win32api import GenerateConsoleCtrlEvent
+    CTRL_C_EVENT = 0
+    GenerateConsoleCtrlEvent(CTRL_C_EVENT, 0)
     
 @app.get('/shutdown')
 def shutdown():
