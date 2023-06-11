@@ -9,8 +9,7 @@ pipeline {
                 bat 'docker build -t my-flask-app .'
             }
         }
-    }
-    stage('Run Container') {
+        stage('Run Container') {
             steps {
                 bat 'docker run -p 5000:5000 my-flask-app'
             }
@@ -21,4 +20,5 @@ pipeline {
                 }
             }
         }
+    }
 }
